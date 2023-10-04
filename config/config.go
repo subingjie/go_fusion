@@ -6,10 +6,16 @@ import (
 
 type Config struct {
 	Server Server
+	MySQL  map[string]MySQLConfig
 }
 
 type Server struct {
 	Port string `mapstructure:"port"`
+}
+
+type MySQLConfig struct {
+	Master string `mapstructure:"master"`
+	Slave  string `mapstructure:"slave"`
 }
 
 func LoadConfiguation() (*Config, error) {
